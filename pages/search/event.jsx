@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 function search () {
 }
 
-export default function Home() {
+export default function Event() {
     return (
         <>
             <Head>

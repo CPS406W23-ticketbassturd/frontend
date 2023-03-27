@@ -5,8 +5,6 @@ import {Typography} from '@mui/material';
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Cookies from 'cookies'
 
 
 const get_User = async (user_id) => {
@@ -33,7 +31,7 @@ const login = async () => {
 
 }
 
-export default function Home() {
+export default function LoginPage() {
     return (
         <>
             <Head>
@@ -45,6 +43,7 @@ export default function Home() {
             <main>
                 <Header />
                 <Stack alignItems={'center'} justifyContent={'center'} sx={{pt:15, backgroundColor: 'white', p:3, m: '20%', border: '5px solid grey', borderRadius: '25px'}}>
+                    <Typography sx={{m:1, color: 'black'}} variant={'h4'}>Login</Typography>
                     <TextField sx={{m:1}} id={'email'} label={'Email'} variant={'outlined'}></TextField>
                     <TextField sx={{m:1}} id={'pass'} label={'Password'} variant={'outlined'}></TextField>
                     <Button sx={{m:1}} variant={'contained'}
@@ -52,6 +51,7 @@ export default function Home() {
                             login();
                         }}
                         >Login</Button>
+                    <Typography sx={{m:1, color: 'black'}} variant={'body1'}>Don't have an account? <a style={{color: 'blue'}} href={'/register'}>Register now</a></Typography>
                 </Stack>
                 <Footer/>
             </main>
