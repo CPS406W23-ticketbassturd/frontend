@@ -17,7 +17,9 @@ function App() {
       <main>
         <section>
           <h2>Account Info</h2>
+            <a href={'/updateAccount'}>
           <button>Change Account Info</button>
+            </a>
         </section>
         <section>
           <h2>Current Tickets</h2>
