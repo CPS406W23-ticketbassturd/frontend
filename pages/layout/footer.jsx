@@ -20,7 +20,7 @@ function Footer() {
             </Grid>
 
           <Grid xs={0}>
-        <Link href="#" alignSelf="right">
+        <Link href="http://localhost:3000/faqPage" alignSelf="right">
         <Typography variant="h6" color="white" component="div">
          FAQ
         </Typography>
