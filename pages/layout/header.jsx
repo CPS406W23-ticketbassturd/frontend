@@ -22,6 +22,7 @@ function Login () {
         localStorage.clear();
       }
         document.getElementById("name").innerHTML = "Hi, " + localStorage.getItem("first_name");
+        document.getElementById("myaccount").innerHTML = "My Account";
     }
   });
 
@@ -43,6 +44,7 @@ function header() {
             Ticketbass-Turd
           </Typography>
           <Typography id='name' variant={'h7'}></Typography>
+          <Button id="myaccount" href="/myAccount" color="inherit"> </Button>
           {Login()}
         </Toolbar>
       </AppBar>
