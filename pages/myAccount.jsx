@@ -16,19 +16,13 @@ function App() {
       <Header />
       <main>
         <section>
-          <h2>Change Account Info</h2>
-          <button>Button 1</button>
+          <h2>Account Info</h2>
+          <button>Change Account Info</button>
         </section>
         <section>
           <h2>Current Tickets</h2>
           <a href="./myAccount/currentTickets">
             <button>Get Current Tickets</button>
-          </a>
-        </section>
-        <section>
-          <h2>Order History</h2>
-          <a href="./myAccount/orderHistory">
-            <button>Get Order History</button>
           </a>
         </section>
       </main>

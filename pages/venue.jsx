@@ -1,19 +1,17 @@
 import React from 'react';
 import VenuePage from './elementsPages/venuePage.jsx';
 
-export async function getServerSideProps(context) {
-  const response = await fetch('127.0.0.1:8000')
-  const data = await response.json()
-
-  return {
-      props:{
-
-      },
-  }
-};
+const get_Venue = async (venue_id) => {
+  const response = await fetch(`http://127.0.0.1:8000/api/venue/${venue_id}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
+  const data = await response.json();
+  return data;
+}
 
 const App = () => {
-  const venue = {
+
+  const venue = {}
+
+  const venue1 = {
     venueId: '82937',
     venueName: 'Some Venue',
     venueAddress: '123 Main St, Anytown USA',

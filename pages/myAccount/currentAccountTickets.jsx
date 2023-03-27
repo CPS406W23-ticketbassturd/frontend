@@ -3,7 +3,7 @@ import Header from '../layout/header';
 import Footer from '../layout/footer';
 import Head from 'next/head'
 
-const TicketList = ({ tickets }) => {
+const TicketList = (tickets) => {
   return (
     <div>
       <Head>
