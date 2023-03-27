@@ -1,6 +1,7 @@
-import React from 'react';
-import Header from '../layout/header';
-import Footer from '../layout/footer';
+import * as React from 'react';
+import { sizing } from '@mui/system';
+import Header from './layout/header';
+import Footer from './layout/footer';
 
 function App() {
   return (
@@ -21,11 +22,6 @@ function App() {
           <h2>Order History</h2>
           <p>This is section 3</p>
           <button>Button 3</button>
-        </section>
-        <section>
-          <h2>Promotions</h2>
-          <p>This is section 4</p>
-          <button>Button 4</button>
         </section>
       </main>
       <Footer />
