@@ -16,7 +16,7 @@ const login = async () => {
 
     const response = await fetch(`http://127.0.0.1:8000/api/login/${email}/${pass}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
     const data = await response.json();
-    if (data.success === true) {
+    if (data.success !== false && data.success !== undefined) {
         localStorage.setItem('user', data.success);
         alert('Login Successful, redirecting to home page.');
 
