@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Header from '../layout/header'
 import Footer from '../layout/footer'
 import {Card, grid2Classes, Typography} from '@mui/material';
-import Grid from '@mui/material/Grid'; // Grid version 1
 import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link';
@@ -45,7 +44,7 @@ export function getSearch() {
 };
 
 
-export default function Event() {
+export default function EventSearch() {
     return (
         <>
             <Head>
@@ -58,7 +57,7 @@ export default function Event() {
                 <Header />
                 <Stack id='results' alignItems={'center'} spacing={2} sx={{mt: 5}}>
                     <Typography variant={'h5'}>Event Results for:</Typography>
-                    <Typography id='query_placeholder' variant={'h4'}>query</Typography>
+                    <Typography id='query_placeholder' variant={'h4'}>N/A</Typography>
                 </Stack>
                 <Stack id='results' alignItems={'center'} spacing={2} sx={{mt: 5}}>
                     {getSearch()}
