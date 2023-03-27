@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import Link from '@mui/material/Link';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -67,7 +68,7 @@ function header() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Button color="inherit">Login</Button>
+            <Button href="http://localhost:3000/login" color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>

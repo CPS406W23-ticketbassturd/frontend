@@ -20,7 +20,7 @@ export default function Home() {
           <Typography variant="h1" align={'center'}>Tickets for your Next Event</Typography>
           <Typography variant="h3" align={'center'}>Welcome to Ticketbass-Turd</Typography>
       </Stack>
-      <Stack spacing={'2%'} alignItems={'center'} justifyContent={'center'} sx={{pt:15}}>
+      <Stack direction="row" spacing={'2%'} alignItems={'center'} justifyContent={'center'} sx={{pt:15}}>
           <Button href="http://localhost:3000/search/event" variant="contained">Search for an Event</Button>
           <Button href="http://localhost:3000/search/venue" variant="contained">Search for a Venue</Button>
           <Button href="http://localhost:3000/search/user" variant="contained">Search for a Host</Button>
