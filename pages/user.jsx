@@ -1,5 +1,5 @@
 import React from 'react';
-import UserPage from '../userPage.jsx';
+import UserPage from './elementsPages/userPage.jsx';
 
 const App = () => {
   const user = {
