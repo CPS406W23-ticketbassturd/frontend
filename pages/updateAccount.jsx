@@ -15,7 +15,7 @@ const Update = async () => {
     const last = document.getElementById('last').value;
     const phone = document.getElementById('phone').value;
 
-    const response = await fetch(`http://127.0.0.1:8000/api/update/acount/${localStorage.getItem('user')}/${email}/${pass}/${first}/${last}/${phone}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
+    const response = await fetch(`http://127.0.0.1:8000/api/update/account/${localStorage.getItem('user')}/${email}/${pass}/${first}/${last}/${phone}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
     const data = await response.json();
     if (data.success !== false && data.success !== undefined) {
         alert('Update Successful, redirecting to my account page.');
