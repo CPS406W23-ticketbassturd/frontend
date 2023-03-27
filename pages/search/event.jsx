@@ -7,7 +7,9 @@ import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
-import SearchBar from '../layout/searchBar';
+
+function search () {
+}
 
 export default function Home() {
     return (
@@ -20,7 +22,7 @@ export default function Home() {
             </Head>
             <main>
                 <Header />
-                <SearchBar />
+
 
                 <Footer />
             </main>
