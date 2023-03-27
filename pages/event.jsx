@@ -1,5 +1,5 @@
 import React from 'react';
-import EventPage from './eventPage.jsx';
+import EventPage from '../eventPage.jsx';
 
 const App = () => {
   const event = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import VenuePage from './venuePage.jsx';
+import VenuePage from '../venuePage.jsx';
 
 const App = () => {
   const venue = {

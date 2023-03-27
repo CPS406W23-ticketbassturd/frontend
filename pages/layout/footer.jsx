@@ -1,8 +1,6 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';

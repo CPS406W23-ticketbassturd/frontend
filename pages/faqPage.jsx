@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Header from '../layout/header';
-import Footer from '../layout/footer';
+import Header from './layout/header';
+import Footer from './layout/footer';
 
 function FAQPage() {
   return (
