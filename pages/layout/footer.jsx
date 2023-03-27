@@ -14,8 +14,8 @@ function Footer() {
           <Grid container wrap="nowrap">
 
             <Grid xs={20}>
-        <Typography variant="h6" color="inherit" component="div">
-        © 2023 ELITE TEAM
+        <Typography variant="body-1" color="inherit" component="div" fontStyle={'italic'}>
+        A CPS406 Project
         </Typography>
             </Grid>
 

@@ -1,15 +1,53 @@
 import Head from 'next/head'
 import Header from '../layout/header'
 import Footer from '../layout/footer'
-import {grid2Classes, Typography} from '@mui/material';
+import {Card, grid2Classes, Typography} from '@mui/material';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
+import {useEffect, useState} from "react";
 
-function search () {
-}
+export function getSearch() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        document.getElementById('query_placeholder').innerHTML = localStorage.getItem('query');
+        const fetchData = () => {
+            fetch(`http://localhost:8000/api/search/events/${localStorage.getItem('query')}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
+            .then(data => data.json())
+                .then(data => data.result)
+                .then(data => {
+                    setData(data);
+                })
+        };
+        fetchData();
+    }, []);
+    return (
+        <div>
+            <table>
+                {
+                    data.map((item) => {
+                        return (
+                            <tr>
+                                <td>{item.name}</td>
+                                <td>{item.description}</td>
+                                <td>{item.date}</td>
+                                <td>{item.time}</td>
+                                <td>{item.location}</td>
+                                <td>{item.price}</td>
+                                <td>{item.category}</td>
+                                <td>{item.organizer}</td>
+                                <td>{item.image}</td>
+                            </tr>
+                        )
+                    })
+                }
+            </table>
+        </div>
+    )
+};
+
 
 export default function Event() {
     return (
@@ -22,8 +60,13 @@ export default function Event() {
             </Head>
             <main>
                 <Header />
-
-
+                <Stack id='results' alignItems={'center'} spacing={2} sx={{mt: 5}}>
+                    <Typography variant={'h5'}>Event Results for:</Typography>
+                    <Typography id='query_placeholder' variant={'h4'}>query</Typography>
+                </Stack>
+                <Stack id='results' alignItems={'center'} spacing={2} sx={{mt: 5}}>
+                    {getSearch()}
+                </Stack>
                 <Footer />
             </main>
         </>
