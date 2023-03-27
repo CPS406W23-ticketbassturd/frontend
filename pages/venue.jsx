@@ -1,5 +1,16 @@
 import React from 'react';
-import VenuePage from '../venuePage.jsx';
+import VenuePage from './elementsPages/venuePage.jsx';
+
+export async function getServerSideProps(context) {
+  const response = await fetch('127.0.0.1:8000')
+  const data = await response.json()
+
+  return {
+      props:{
+
+      },
+  }
+};
 
 const App = () => {
   const venue = {

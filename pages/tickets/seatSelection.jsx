@@ -1,5 +1,5 @@
 import React from 'react';
-import SeatSelection from './seatSelection.jsx';
+import SeatSelection from './seatSelectionFunction.jsx';
 
 const App = () => {
   const sections = [

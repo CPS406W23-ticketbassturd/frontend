@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from './layout/header';
+import Footer from './layout/footer';
 import Head from 'next/head'
 
 const UserPage = ({ firstName, lastName, userId }) => {
@@ -10,8 +12,10 @@ const UserPage = ({ firstName, lastName, userId }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>{`${firstName} ${lastName}`}</h1>
-      <p>{`User ID: ${userId}`}</p>
+      <Header />
+      <h1 style={{textAlign: 'center'}}>{`${firstName} ${lastName}`}</h1>
+      <p style={{textAlign: 'center'}}>{`User ID: ${userId}`}</p>
+      <Footer />
     </div>
   );
 };

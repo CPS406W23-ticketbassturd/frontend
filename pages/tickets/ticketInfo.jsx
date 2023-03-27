@@ -1,5 +1,5 @@
 import React from 'react';
-import TicketInfo from './ticketInfo.jsx';
+import TicketInfo from './ticketInfoFunction.jsx';
 
 const App = () => {
   const ticket = {

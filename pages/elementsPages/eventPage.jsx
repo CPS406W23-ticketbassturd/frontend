@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from './layout/header';
+import Footer from './layout/footer';
 import Head from 'next/head'
 
 const EventPage = ({ eventId, venue, eventName, eventDate, hostName, minAge }) => {
@@ -10,12 +12,14 @@ const EventPage = ({ eventId, venue, eventName, eventDate, hostName, minAge }) =
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <p>{`Event ID: ${eventId}`}</p>
-      <h1>{eventName}</h1>
-      <p>{`Venue: ${venue}`}</p>
-      <p>{`Date: ${eventDate}`}</p>
-      <p>{`Minimum Age: ${minAge}`}</p>
-      <p>{`Host: ${hostName}`}</p>
+      <Header />
+      <p style={{textAlign: 'center'}}>{`Event ID: ${eventId}`}</p>
+      <h1 style={{textAlign: 'center'}}>{eventName}</h1>
+      <p style={{textAlign: 'center'}}>{`Venue: ${venue}`}</p>
+      <p style={{textAlign: 'center'}}>{`Date: ${eventDate}`}</p>
+      <p style={{textAlign: 'center'}}>{`Minimum Age: ${minAge}`}</p>
+      <p style={{textAlign: 'center'}}>{`Host: ${hostName}`}</p>
+      <Footer />
     </div>
   );
 };
