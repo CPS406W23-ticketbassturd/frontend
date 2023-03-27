@@ -4,6 +4,8 @@ import Footer from './layout/footer'
 import {Typography} from '@mui/material';
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 
 export default function Home() {
     return (
@@ -15,11 +17,13 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-            <Header />
-
-
-
-            <Footer />
+                <Header />
+                <Stack alignItems={'center'} justifyContent={'center'} sx={{pt:15, backgroundColor: 'white', width: "50%", height: "50%", p:20}}>
+                    <TextField sx={{m:5, p: 2}} id={'email'} label={'Email'} variant={'outlined'}></TextField>
+                    <TextField sx={{m:5, p: 2}} id={'pass'} label={'Password'} variant={'outlined'}></TextField>
+                    <Button sx={{mt:5}} variant={'contained'}>Login</Button>
+                </Stack>
+                <Footer/>
             </main>
         </>
     )
