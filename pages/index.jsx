@@ -1,11 +1,8 @@
 import Head from 'next/head'
 import Header from './layout/header'
 import Footer from './layout/footer'
-import {grid2Classes, Typography} from '@mui/material';
-import Grid from '@mui/material/Grid'; // Grid version 1
-import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+import {Typography} from '@mui/material';
 import Stack from '@mui/material/Stack'
-import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 
 export default function Home() {
@@ -23,10 +20,10 @@ export default function Home() {
           <Typography variant="h1" align={'center'}>Tickets for your Next Event</Typography>
           <Typography variant="h3" align={'center'}>Welcome to Ticketbass-Turd</Typography>
       </Stack>
-      <Stack spacing={2} direction="row" alignItems={'center'} justifyContent={'center'} sx={{pt:20}} >
-          <Button href="http://localhost:3000/search/user" variant="contained">Search for a User</Button>
+      <Stack spacing={'2%'} alignItems={'center'} justifyContent={'center'} sx={{pt:15}}>
           <Button href="http://localhost:3000/search/event" variant="contained">Search for an Event</Button>
           <Button href="http://localhost:3000/search/venue" variant="contained">Search for a Venue</Button>
+          <Button href="http://localhost:3000/search/user" variant="contained">Search for a Host</Button>
       </Stack>
 
 
