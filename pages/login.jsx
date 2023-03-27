@@ -9,6 +9,11 @@ import Box from '@mui/material/Box';
 import Cookies from 'cookies'
 
 
+const get_User = async (user_id) => {
+    const response = await fetch(`http://127.0.0.1:8000/api/get/user/${user_id}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
+    const data = await response.json();
+    return data.result.first_name;
+}
 
 const login = async () => {
     const email = document.getElementById('email').value;
@@ -17,6 +22,7 @@ const login = async () => {
     const response = await fetch(`http://127.0.0.1:8000/api/login/${email}/${pass}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
     const data = await response.json();
     if (data.success !== false && data.success !== undefined) {
+        localStorage.setItem('first_name', await get_User(data.success));
         localStorage.setItem('user', data.success);
         alert('Login Successful, redirecting to home page.');
 

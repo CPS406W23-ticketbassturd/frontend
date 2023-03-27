@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Link from '@mui/material/Link';
+import Image from 'next/image';
+import logo from '../../images/logo.png';
 import {useEffect} from "react";
 
 function Login () {
@@ -19,6 +21,7 @@ function Login () {
       document.getElementById("label").onclick = function() {
         localStorage.clear();
       }
+        document.getElementById("name").innerHTML = "Hi, " + localStorage.getItem("first_name");
     }
   });
 
@@ -33,9 +36,13 @@ function header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
+          <Link href={'../../'}>
+            <Image src={logo} width={50} height={50}/>
+          </Link>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Ticket Bass-Turd
+            Ticketbass-Turd
           </Typography>
+          <Typography id='name' variant={'h7'}></Typography>
           {Login()}
         </Toolbar>
       </AppBar>
