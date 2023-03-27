@@ -24,28 +24,24 @@ export function getSearch() {
         fetchData();
     }, []);
     return (
-        <div>
-            <table>
-                {
-                    data.map((item) => {
-                        return (
-                            <tr>
-                                <td>{item.name}</td>
-                                <td>{item.description}</td>
-                                <td>{item.date}</td>
-                                <td>{item.time}</td>
-                                <td>{item.location}</td>
-                                <td>{item.price}</td>
-                                <td>{item.category}</td>
-                                <td>{item.organizer}</td>
-                                <td>{item.image}</td>
-                            </tr>
-                        )
-                    })
-                }
-            </table>
-        </div>
-    )
+        data.map((item) => {
+            return (
+                <Grid2 item xs={12} sm={6} md={4} lg={3} xl={2}>
+                    <Card sx={{m: 1, p: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2}}>
+                        <Stack alignItems={'left'} justifyContent={'left'} sx={{pt: 1, backgroundColor: 'white', p: 3, m: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2}}>
+                            <Typography sx={{m: 1, color: 'black'}} variant={'h6'}>{item.name}</Typography>
+                            <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{item.date}</Typography>
+                            <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`Price: ${item.price}$`}</Typography>
+                            <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`Attendees: ${item.num_attendees}`}</Typography>
+                            <Link href={`/event?id=${item.event_id}`}>
+                                <Button sx={{m: 1, color: 'black'}} variant={'contained'}>View Event</Button>
+                            </Link>
+                        </Stack>
+                    </Card>
+                </Grid2>
+            )
+        }
+    ))
 };
 
 
