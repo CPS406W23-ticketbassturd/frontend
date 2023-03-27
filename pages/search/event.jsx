@@ -26,7 +26,7 @@ export function getSearch() {
         data.map((item) => {
             return (
                 <Grid2 item xs={12} sm={6} md={4} lg={3} xl={2}>
-                    <Card sx={{m: 1, p: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2}}>
+                    <Card sx={{m: 1, p: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2, width: '40em'}}>
                         <Stack alignItems={'left'} justifyContent={'left'} sx={{pt: 1, backgroundColor: 'white', p: 3, m: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2}}>
                             <Typography sx={{m: 1, color: 'black'}} variant={'h6'}>{item.name}</Typography>
                             <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{item.date}</Typography>
