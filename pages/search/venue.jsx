@@ -59,7 +59,7 @@ export default function VenueSearch() {
                     <Typography id='query_placeholder' variant={'h4'}>N/A</Typography>
                 </Stack>
                 <Stack id='results' alignItems={'center'} spacing={2} sx={{mt: 5}}>
-                    {getSearch()}
+                    {getSearch}
                 </Stack>
                 <Footer />
             </main>
