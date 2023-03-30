@@ -80,7 +80,7 @@ export function getEvent() {
         <div>
             <Stack alignItems={'center'} sx={{mt:10}}>
                 <Typography variant={'h1'}>{placeholderEvent.name}</Typography>
-                <Button style={{maxWidth: '5iem'}}sx={{m:5}} variant={'contained'}
+                <Button style={{maxWidth: '5iem'}} sx={{m:5}} variant={'contained'}
                         onClick={() => {
                             window.location.href = '/'
                         }}
@@ -92,7 +92,7 @@ export function getEvent() {
   return (
       <div>
           <Box>
-              <Stack align={'center'} spacing={4} sx={{mt:5}}>
+              <Stack alignItems={'center'} spacing={4} sx={{mt:5}}>
                   <Typography variant={'h1'}>{placeholderEvent.name}</Typography>
                   <Typography variant={'body1'}>{placeholderEvent.description}</Typography>
                   <Grid2 container spacing={2} sx={{m: 10}}>
@@ -108,11 +108,17 @@ export function getEvent() {
                       <Grid2 xs={6}>
                           <Stack align={'left'} spacing={2} sx={{m:5}}>
                               <Typography variant={'h4'}>{`Date: ${(placeholderEvent.date)}`}</Typography>
-                              <Typography variant={'h4'}>{`Price: ${(placeholderEvent.price)}`}</Typography>
+                              <Typography variant={'h4'}>{`Price: $${(placeholderEvent.price)}`}</Typography>
                               <Typography variant={'h4'}>{`Minimum Age: ${(placeholderEvent.min_age)}`}</Typography>
                           </Stack>
                       </Grid2>
                   </Grid2>
+                  <Button style={{maxWidth: '20iem', marginBottom: '10%'}} sx={{m:5}} variant={'contained'}
+                    onClick={
+                        () => {
+                            window.location.href = `/buy?id=${placeholderEvent.event_id}`
+                        }
+                    }>Buy Tickets Now</Button>
               </Stack>
 
           </Box>
