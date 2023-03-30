@@ -49,7 +49,6 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     justifyContent: 'center',
 }));
 
-
 export default function Home() {
   return (
     <>
@@ -78,24 +77,39 @@ export default function Home() {
               </Search>
           </Box>
       <Stack direction={{ sm: 'column', md: 'row'}} spacing={{xs: '5%', md: '2%'}} alignItems={'center'} justifyContent={'center'}>
-          <Button onClick={
+          <Button id={'searchButton'} onClick={
                 () => {
                     const query = document.getElementById('search').value;
-                    localStorage.setItem('query', query)
+                    if (query === '') {
+                        alert('Please enter a search query')
+                    } else {
+                        localStorage.setItem('query', query)
+                        window.location.href = '/search/event';
+                    }
                 }
-          } href="/search/event" variant="contained">Search for an Event</Button>
+          } variant="contained">Search for an Event</Button>
           <Button onClick={
               () => {
                   const query = document.getElementById('search').value;
-                  localStorage.setItem('query', query)
+                  if (query === '') {
+                      alert('Please enter a search query')
+                  } else {
+                      localStorage.setItem('query', query)
+                      window.location.href = '/search/venue';
+                  }
               }
-          } href="/search/venue" variant="contained">Search for a Venue</Button>
+          } variant="contained">Search for a Venue</Button>
           <Button onClick={
               () => {
                   const query = document.getElementById('search').value;
-                  localStorage.setItem('query', query)
+                  if (query === '') {
+                      alert('Please enter a search query')
+                  } else {
+                      localStorage.setItem('query', query)
+                      window.location.href = '/search/user';
+                  }
               }
-          } href="/search/user" variant="contained">Search for a Host</Button>
+          } variant="contained">Search for a Host</Button>
       </Stack>
       <Footer />
       </main>
