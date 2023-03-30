@@ -3,9 +3,86 @@ import Header from '../layout/header'
 import Footer from '../layout/footer'
 import {Card, grid2Classes, Typography} from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+
+
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link';
 import {useEffect, useState} from "react";
+
+
+let placeholderEvent = {
+    "event_id": "Loading...",
+    "venue_id": "Loading...",
+    "name": "Loading...",
+    "description": "Loading...",
+    "date": "Loading...",
+    "min_age": -1,
+    "num_attendees": -1,
+    "price": -1
+}
+
+let placeHolderVenue = {
+    "venue_id": "Loading...",
+    "name": "Loading...",
+    "description": "Loading...",
+    "address": "Loading...",
+    "max_capacity": -1
+}
+
+function updateWindowTitle(title) {
+    document.title = title;
+}
+
+export function getEvent() {
+    const [eventInfo, setEventInfo] = useState([]);
+    const [venueInfo, setVenueInfo] = useState([]);
+
+    useEffect(() => {
+        const fetchData = () => {
+            fetch(`http://localhost:8000/api/get/event/${new URLSearchParams(window.location.search).get('id')}`, {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}
+            })
+                .then(data => data.json())
+                .then(data => {
+                    setEventInfo(data);
+                    if (data.result !== undefined) {
+                        placeholderEvent.event_id = data.result.event_id;
+                        placeholderEvent.venue_id = data.result.venue_id;
+                        placeholderEvent.name = data.result.name;
+                        placeholderEvent.description = data.result.description;
+                        placeholderEvent.date = data.result.date;
+                        placeholderEvent.min_age = data.result.min_age;
+                        placeholderEvent.num_attendees = data.result.num_attendees;
+                        placeholderEvent.price = data.result.price;
+                        updateWindowTitle(`${placeholderEvent.name} | Ticketbass-Turd`)
+
+                        fetchVenue();
+                    } else {
+                        placeholderEvent.name = "Event Not Found";
+                    }
+                });
+        };
+        const fetchVenue = () => {
+            fetch(`http://localhost:8000/api/get/venue/${placeholderEvent.venue_id}`, {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}
+            })
+                .then(data => data.json())
+                .then(data => {
+                    setVenueInfo(data);
+                    if (data.result !== undefined) {
+                        placeHolderVenue.venue_id = data.result.venue_id;
+                        placeHolderVenue.name = data.result.name;
+                        placeHolderVenue.description = data.result.description;
+                        placeHolderVenue.address = data.result.address;
+                        placeHolderVenue.max_capacity = data.result.max_capacity;
+                    }
+                })
+        }
+        fetchData();
+    }, []);
+}
 
 export function getSearch() {
     const [data, setData] = useState([]);
@@ -25,10 +102,9 @@ export function getSearch() {
                 <Grid2 item xs={12} sm={6} md={4} lg={3} xl={2}>
                     <Card sx={{m: 1, p: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2}}>
                         <Stack alignItems={'left'} justifyContent={'left'} sx={{pt: 1, backgroundColor: 'white', p: 3, m: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2}}>
-                            <Typography sx={{m: 1, color: 'black'}} variant={'h6'}>{item.ticketId}</Typography>
-                            <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{item.eventId}</Typography>
+                            <Typography sx={{m: 1, color: 'black'}} variant={'h6'}>{`Ticket ID: ${item.ticket_id}`}</Typography>
+                            <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`Event ID: ${item.event_id}`}</Typography>
                             <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`Price: ${item.price}$`}</Typography>
-                            <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`Attendees: ${item.section}`}</Typography>
                         </Stack>
                     </Card>
                 </Grid2>
