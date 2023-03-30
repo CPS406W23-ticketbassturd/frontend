@@ -21,7 +21,7 @@ function Login () {
       document.getElementById("label").onclick = function() {
         localStorage.clear();
       }
-        document.getElementById("name").innerHTML = "Hi, " + localStorage.getItem("first_name");
+        document.getElementById("name").innerHTML = "Welcome, " + localStorage.getItem("first_name");
         document.getElementById("myaccount").innerHTML = "My Account";
     }
   });
@@ -43,7 +43,7 @@ function header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Ticketbass-Turd
           </Typography>
-          <Typography id='name' variant={'h7'}></Typography>
+          <Typography style={{marginRight: '2%'}} id='name' variant={'body1'}></Typography>
           <Button id="myaccount" href="/myAccount" color="inherit"> </Button>
           {Login()}
         </Toolbar>

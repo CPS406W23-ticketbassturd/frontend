@@ -3,6 +3,9 @@ import { sizing } from '@mui/system';
 import Header from './layout/header';
 import Footer from './layout/footer';
 import Head from 'next/head'
+import Stack from "@mui/material/Stack";
+import {Typography} from "@mui/material";
+import Button from "@mui/material/Button";
 
 function App() {
   return (
@@ -15,18 +18,23 @@ function App() {
       </Head>
       <Header />
       <main>
-        <section>
-          <h2>Account Info</h2>
-            <a href={'/updateAccount'}>
-          <button>Change Account Info</button>
-            </a>
-        </section>
-        <section>
-          <h2>Current Tickets</h2>
-          <a href="./myAccount/currentTickets">
-            <button>Get Current Tickets</button>
-          </a>
-        </section>
+        <Stack alignItems={'center'} spacing={2} sx={{m: 10}}>
+          <Typography variant={'h2'}>Account Info</Typography>
+            <Button style={{maxWidth: '5iem'}} sx={{m:5}} variant={'contained'}
+                    onClick={() => {
+                        window.location.href = '/updateAccount'
+                    }}
+            >Update Account</Button>
+
+            <Typography variant={'h2'} style={{marginTop: '5%'}}>Tickets</Typography>
+            <Button style={{maxWidth: '5iem'}} sx={{m:5}} variant={'contained'}
+                    onClick={() => {
+                        window.location.href = '/myAccount/currentTickets'
+                    }}
+            >View Tickets</Button>
+        </Stack>
+
+
       </main>
       <Footer />
     </div>
