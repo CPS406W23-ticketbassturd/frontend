@@ -19,6 +19,7 @@ const Update = async () => {
     const data = await response.json();
     if (data.success !== false && data.success !== undefined) {
         alert('Update Successful, redirecting to my account page.');
+        localStorage.setItem('first_name', `${first}`);
 
         window.location.href = 'http://localhost:3000/myAccount';
     } else {

@@ -108,8 +108,9 @@ export function getEvent() {
                       <Grid2 xs={6}>
                           <Stack align={'left'} spacing={2} sx={{m:5}}>
                               <Typography variant={'h4'}>{`Date: ${(placeholderEvent.date)}`}</Typography>
-                              <Typography variant={'h4'}>{`Price: $${(placeholderEvent.price)}`}</Typography>
-                              <Typography variant={'h4'}>{`Minimum Age: ${(placeholderEvent.min_age)}`}</Typography>
+                              <Typography variant={'h5'}>{`Price: $${(placeholderEvent.price)}`}</Typography>
+                              <Typography variant={'h5'}>{`Minimum Age: ${(placeholderEvent.min_age)}`}</Typography>
+                              <Typography variant={'h5'}>{`Attendees: ${(placeholderEvent.num_attendees)}`}</Typography>
                           </Stack>
                       </Grid2>
                   </Grid2>
