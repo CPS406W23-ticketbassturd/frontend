@@ -4,6 +4,9 @@ import Typography from '@mui/material/Typography';
 import Header from './layout/header';
 import Footer from './layout/footer';
 import Head from 'next/head'
+import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Stack from "@mui/material/Stack";
 
 function FAQPage() {
   return (
@@ -17,45 +20,94 @@ function FAQPage() {
     <Header />
     <Box sx={{ flexGrow: 1 }} display="flex" flexDirection="column" alignItems="center">
 
-      <Typography variant="h3" color="inherit" component="div">
-        FAQ (Frequently Asked Questions)
+      <Typography variant="h2" color="inherit" component="div" sx={{mt: 5}}>
+        Frequently Asked Questions
       </Typography>
 
-      <Typography variant="h6">
-        How long will it take to get an invoice?
-      </Typography>
-      <Typography varaint="h6">
-      It will typically take around 1 business day
-      </Typography>
+      <Stack spacing={2} sx={{m: 5}}>
+        <Accordion >
+          <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header">
+            <Typography variant="h6">
+              How long will it take to get an invoice?
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography varaint="body2">
+              It will typically take around 1 business day
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
 
-      <Typography variant="h6">
-        Can i get a refund on my tickets?
-      </Typography>
-      <Typography varaint="h6">
-      no lol
-      </Typography>
+        <Accordion>
+          <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2a-content"
+              id="panel2a-header">
+            <Typography variant="h6">
+              Can i get a refund on my tickets?
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography varaint="body2">
+              no lol
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
 
-      <Typography variant="h6">
-        How do I change my account information?
-      </Typography>
-      <Typography varaint="h6">
-      My Account pages then press Change Account Info
-      </Typography>
+        <Accordion>
+          <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel3a-content"
+              id="panel3a-header">
+            <Typography variant="h6">
+              How do I change my account information?
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography varaint="body1">
+              My Account pages then press Change Account Info
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
 
-      <Typography variant="h6">
-        How do I access my tickets?
-        My Account pages then press Current Tickets
-      </Typography>
-      <Typography varaint="h6">
-        My Account pages then press Current Tickets
-      </Typography>
+        <Accordion>
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel4a-content"
+                id="panel4a-header">
+                <Typography variant="h6">
+                    How do I access my tickets?
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography varaint="body1">
+                    My Account pages then press Current Tickets
+                </Typography>
+            </AccordionDetails>
+        </Accordion>
 
-      <Typography variant="h6">
-        Is reselling allowed?
-      </Typography>
-      <Typography varaint="h6">
-        There is no resale feature
-      </Typography>
+
+        <Accordion>
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel5a-content"
+                id="panel5a-header">
+                <Typography variant="h6">
+                    Is reselling allowed?
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography varaint="body1">
+                    There is no resale feature
+                </Typography>
+            </AccordionDetails>
+        </Accordion>
+
+      </Stack>
+
     </Box>
     <Footer />
     </div>
