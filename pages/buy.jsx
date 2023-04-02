@@ -29,13 +29,16 @@ let placeHolderVenue = {
     "max_capacity": -1
 }
 
+function getUserID() {
+    return new URLSearchParams(window.location.search).get('user');
+}
+
 function updateWindowTitle(title) {
     document.title = title;
 }
 
-
-
-export function PaymentForm(eventID) {
+export function PaymentForm(eventID, user) {
+    const [userID, setUserID] = useState('');
     const [quantity, setQuantity] = useState('');
     const [expiryMonth, setExpiryMonth] = useState('');
     const [expiryYear, setExpiryYear] = useState('');
@@ -97,7 +100,7 @@ export function PaymentForm(eventID) {
                     </Stack>
 
                     <Stack direction={'row'} spacing={2} sx={{mt: 3}}>
-                        <FormControl sx={{width: '45%'}}>
+                        <FormControl sx={{width: '50%'}}>
                             <InputLabel id="expiryMonth-label">Expiry Month</InputLabel>
                             <Select
                                 labelId='expiryMonth-label'
@@ -124,21 +127,23 @@ export function PaymentForm(eventID) {
                     </Stack>
                 </div>
             </Box>
-            <Link href={`/checkout?eventID=${eventID}&quantity=${quantity}&cardNum=${cardNum}&cvv=${cvv}&name=${name}&expMonth=${expiryMonth}&expYear=${expiryYear}`}>
-                <Button style={{minWidth: '100%', marginTop: '10%'}} variant={'contained'}
-                >Checkout</Button>
+            <Link href={`/checkout?user=${user}&eventID=${eventID}&quantity=${quantity}&cardNum=${cardNum}&cvv=${cvv}&name=${name}&expiryMonth=${expiryMonth}&expiryYear=${expiryYear}`}>
+                <Button style={{minWidth: '100%', marginTop: '10%'}} variant={'contained'}>Checkout</Button>
             </Link>
+
 
         </Box>
 
     );
 }
 
-export function getPurchase() {
+export function GetPurchase() {
     const [eventInfo, setEventInfo] = useState([]);
     const [venueInfo, setVenueInfo] = useState([]);
+    const [userID, setUserID] = useState('');
 
     useEffect(() => {
+        setUserID(localStorage.getItem('user'));
         const fetchData = () => {
             fetch(`http://localhost:8000/api/get/event/${new URLSearchParams(window.location.search).get('id')}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
                 .then(data => data.json())
@@ -201,7 +206,7 @@ export function getPurchase() {
                         <Grid2 xs={6}>
                             <Stack align={'left'} spacing={2} sx={{m:5}}>
                                 <Typography variant={'h4'}>Purchase</Typography>
-                                {PaymentForm(placeholderEvent.event_id)}
+                                {PaymentForm(placeholderEvent.event_id, userID)}
                             </Stack>
                         </Grid2>
                     </Grid2>
@@ -214,7 +219,7 @@ export function getPurchase() {
     )
 }
 
-export default function Checkout() {
+export default function Buy() {
     return (
         <>
             <Head>
@@ -225,7 +230,7 @@ export default function Checkout() {
             </Head>
             <main>
                 <Header />
-                {getPurchase()}
+                <GetPurchase/>
                 <Footer/>
             </main>
         </>
