@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import {useState, useEffect} from "react";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Link from "@mui/material/Link";
 
 let placeholderEvent = {
     "event_id": "Loading...",
@@ -31,23 +33,50 @@ function updateWindowTitle(title) {
     document.title = title;
 }
 
-export function QuantitySelect() {
-    const [quantity, setQuantity] = useState('');
 
-    const handleChange = (event) => {
+
+export function PaymentForm(eventID) {
+    const [quantity, setQuantity] = useState('');
+    const [expiryMonth, setExpiryMonth] = useState('');
+    const [expiryYear, setExpiryYear] = useState('');
+    const [cardNum, setCardNum] = useState('');
+    const [name, setName] = useState('');
+    const [cvv, setCVV] = useState('');
+
+    const handleChangeQuantity = (event) => {
         setQuantity(event.target.value);
     };
+
+    const handleChangeExpMonth = (event) => {
+        setExpiryMonth(event.target.value);
+    }
+
+    const handleChangeExpYear = (event) => {
+        setExpiryYear(event.target.value);
+    }
+
+    const handleChangeCardNum = (event) => {
+        setCardNum(event.target.value);
+    }
+
+    const handleChangeName = (event) => {
+        setName(event.target.value);
+    }
+
+    const handleChangeCVV = (event) => {
+        setCVV(event.target.value);
+    }
 
     return (
         <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
                 <InputLabel id="quantity-label">Quantity</InputLabel>
                 <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
+                    labelId="quantity-label"
+                    id="quantity"
                     value={quantity}
                     label="Age"
-                    onChange={handleChange}
+                    onChange={handleChangeQuantity}
                 >
                     <MenuItem value={1}>1</MenuItem>
                     <MenuItem value={2}>2</MenuItem>
@@ -59,7 +88,49 @@ export function QuantitySelect() {
                     <MenuItem value={8}>8</MenuItem>
                 </Select>
             </FormControl>
+            <Box component={'form'} autoComplete={'off'}>
+                <div>
+                    <TextField required id='cardNum' label={'Card Number'}  onChange={handleChangeCardNum} fullWidth={'100%'} sx={{mt: 3}}/>
+                    <Stack direction={'row'} spacing={2} sx={{mt: 3}}>
+                        <TextField onChange={handleChangeName} required id={'name'} label={'Name on Card'} fullWidth={'100%'}/>
+                        <TextField onChange={handleChangeCVV} required id={'cvv'} label={'CVV'}/>
+                    </Stack>
+
+                    <Stack direction={'row'} spacing={2} sx={{mt: 3}}>
+                        <FormControl sx={{width: '45%'}}>
+                            <InputLabel id="expiryMonth-label">Expiry Month</InputLabel>
+                            <Select
+                                labelId='expiryMonth-label'
+                                id="expiryMonth"
+                                value={expiryMonth}
+                                label="Expiry Month"
+                                onChange={handleChangeExpMonth}
+                            >
+                                <MenuItem value={1}>1</MenuItem>
+                                <MenuItem value={2}>2</MenuItem>
+                                <MenuItem value={3}>3</MenuItem>
+                                <MenuItem value={4}>4</MenuItem>
+                                <MenuItem value={5}>5</MenuItem>
+                                <MenuItem value={6}>6</MenuItem>
+                                <MenuItem value={7}>7</MenuItem>
+                                <MenuItem value={8}>8</MenuItem>
+                                <MenuItem value={9}>9</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                                <MenuItem value={11}>11</MenuItem>
+                                <MenuItem value={12}>12</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <TextField onChange={handleChangeExpYear} required id={'expiryYear'} label={'Expiry Year'} s/>
+                    </Stack>
+                </div>
+            </Box>
+            <Link href={`/checkout?eventID=${eventID}&quantity=${quantity}&cardNum=${cardNum}&cvv=${cvv}&name=${name}&expMonth=${expiryMonth}&expYear=${expiryYear}`}>
+                <Button style={{minWidth: '100%', marginTop: '10%'}} variant={'contained'}
+                >Checkout</Button>
+            </Link>
+
         </Box>
+
     );
 }
 
@@ -85,8 +156,6 @@ export function getPurchase() {
                         updateWindowTitle(`${placeholderEvent.name} | Ticketbass-Turd`)
 
                         fetchVenue();
-                    } else {
-                        placeholderEvent.name = "Event Not Found";
                     }
                 });
         };
@@ -106,20 +175,6 @@ export function getPurchase() {
         }
         fetchData();
     }, []);
-
-    if (placeholderEvent.name === "Event Not Found") {
-        return (
-            <div>
-                <Stack alignItems={'center'} sx={{mt:10}}>
-                    <Typography variant={'h1'}>{placeholderEvent.name}</Typography>
-                    <Button style={{maxWidth: '5iem'}} sx={{m:5}} variant={'contained'}
-                            onClick={() => {
-                                window.location.href = '/'
-                            }}
-                    >Back to search</Button>
-                </Stack>
-            </div>);
-    }
 
     return (
         <div>
@@ -146,13 +201,7 @@ export function getPurchase() {
                         <Grid2 xs={6}>
                             <Stack align={'left'} spacing={2} sx={{m:5}}>
                                 <Typography variant={'h4'}>Purchase</Typography>
-                                {QuantitySelect()}
-                                <Button style={{maxWidth: '20iem', marginBottom: '10%'}} sx={{m:5}} variant={'contained'}
-                                        onClick={
-                                            () => {
-                                                window.location.href = `/buy?id=${placeholderEvent.event_id}`
-                                            }
-                                        }>Checkout</Button>
+                                {PaymentForm(placeholderEvent.event_id)}
                             </Stack>
                         </Grid2>
                     </Grid2>
