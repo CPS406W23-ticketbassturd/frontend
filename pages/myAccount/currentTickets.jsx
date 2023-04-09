@@ -9,9 +9,67 @@ import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link';
 import {useEffect, useState} from "react";
 
+function Venue({VenueID}) {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        const fetchData = () => {
+            fetch(`http://localhost:8000/api/get/venue/${VenueID}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
+            .then(data => data.json())
+                .then(data => {
+                    if (data.result !== undefined) {
+                        setData(data);
+                        setLoading(false);
+                    }
+                })
+        };
+        fetchData();
+    }, []);
+    if (loading) {
+        return (
+            <Typography sx={{m: 1, color: 'black'}} variant={'h6'}>{`Venue ID: Loading...`}</Typography>
+        )
+    }
+    return (
+        <Stack>
+            <Link href={`/venue?id=${data.result.venue_id}`} underline={'hover'} color={'inherit'}>
+                <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`${data.result.name}`}</Typography>
+            </Link>
+        </Stack>
+    )
+}
 
-function Ticket({tickets}) {
 
+function EventInfo({EventID}) {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        const fetchData = () => {
+            fetch(`http://localhost:8000/api/get/event/${EventID}`, {method: 'GET', headers: {'Content-Type': 'application/json', 'Alow-Control-Allow-Origin': '*'}})
+            .then(data => data.json())
+                .then(data => {
+                    if (data.result !== undefined) {
+                        setData(data);
+                        setLoading(false);
+                    }
+                })
+        };
+        fetchData();
+    }, []);
+    if (loading) {
+        return (
+            <Typography sx={{m: 1, color: 'black'}} variant={'h6'}>{`Event ID: Loading...`}</Typography>
+        )
+    }
+    return (
+        <Stack>
+            <Link href={`/event?id=${data.result.event_id}`} underline={'hover'} color={'inherit'}>
+                <Typography sx={{m: 1, color: 'black'}} variant={'h6'}>{`${data.result.name}`}</Typography>
+            </Link>
+            <Venue VenueID={data.result.venue_id} />
+            <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`Date: ${data.result.date}`}</Typography>
+        </Stack>
+    )
 }
 
 export function getSearch() {
@@ -32,11 +90,9 @@ export function getSearch() {
                 <Grid2 item xs={12} sm={6} md={4} lg={3} xl={2}>
                     <Card sx={{m: 1, p: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2}}>
                         <Stack alignItems={'left'} justifyContent={'left'} sx={{pt: 1, backgroundColor: 'white', p: 3, m: 1, border: '1px solid grey', borderRadius: '25px', boxShadow: 2}}>
-                            <Typography sx={{m: 1, color: 'black'}} variant={'h6'}>{`Ticket ID: ${item.ticket_id}`}</Typography>
-                            <Link href={`/event?id=${item.event_id}`}>
-                                <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`Event ID: ${item.event_id}`}</Typography>
-                            </Link>
+                            <EventInfo EventID={item.event_id} />
                             <Typography sx={{m: 1, color: 'black'}} variant={'body1'}>{`Price: ${item.price}$`}</Typography>
+                            <Typography sx={{m: 1, color: 'black'}} variant={'body2'}>{`Ticket ID: ${item.ticket_id}`}</Typography>
                         </Stack>
                     </Card>
                 </Grid2>
