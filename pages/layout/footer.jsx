@@ -8,7 +8,7 @@ import Link from '@mui/material/Link';
 
 function Footer() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, mt:20 }}>
       <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
         <Toolbar>
           <Grid container wrap="nowrap">

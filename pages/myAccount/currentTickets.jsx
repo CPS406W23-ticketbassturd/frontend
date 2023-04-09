@@ -10,6 +10,10 @@ import Link from '@mui/material/Link';
 import {useEffect, useState} from "react";
 
 
+function Ticket({tickets}) {
+
+}
+
 export function getSearch() {
     const [data, setData] = useState([]);
     useEffect(() => {

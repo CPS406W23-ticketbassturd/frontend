@@ -18,24 +18,16 @@ const Search = styled('div')(({ theme }) => ({
         backgroundColor: alpha(theme.palette.common.black, 0.25),
     },
     marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('lg')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-    },
+    width: 'auto'
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('lg')]: {
-            width: 'auto',
-        },
+        width: 'full'
     },
 }));
 
@@ -60,23 +52,21 @@ export default function Home() {
       </Head>
       <main>
         <Header />
-      <Stack spacing={2} sx={{pt:15}}>
+      <Stack spacing={2} sx={{pt:15, pb:10}}>
           <Typography variant="h1" align={'center'}>Tickets for your Next Event</Typography>
           <Typography variant="h3" align={'center'}>Welcome to Ticketbass-Turd</Typography>
       </Stack>
-          <Box sx={{m: 10}}>
-              <Search>
-                  <SearchIconWrapper>
-                      <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                      id="search"
-                      placeholder="Search…"
-                      inputProps={{ 'aria-label': 'search' }}
-                  />
-              </Search>
-          </Box>
       <Stack direction={{ sm: 'column', md: 'row'}} spacing={{xs: '5%', md: '2%'}} alignItems={'center'} justifyContent={'center'}>
+          <Search>
+              <SearchIconWrapper>
+                  <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                  id="search"
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+              />
+          </Search>
           <Button id={'searchButton'} onClick={
                 () => {
                     const query = document.getElementById('search').value;
